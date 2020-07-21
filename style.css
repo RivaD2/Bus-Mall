@@ -1,8 +1,12 @@
-#productList li {
-  list-style:none;
+#productList tr {
+  padding: 20px;
+  display: inline-block;
 }
 
+#productList {
+  
+}
 img {
-  width: 100px;
+  width: 400px;
 }
 
