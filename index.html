@@ -8,16 +8,17 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+ <header>
+  <h1>Busmall<h1>
   <nav>
-  <h1>BusMall Product Vote Page</h1>
-  </div>
-      <ul>
-        <li>
-          <a href="index.html">ProductHomePage</a>
-        </li>
-      </ul>
-  </div>
-<table>
+    <div>
+      <a href="index.html" id="selected">ProductHomePage</a>
+    </div>
+</nav>
+<header>'
+<main>
+  <p>Which Product Is the Best? Help us know which products are most liked, your votes matter!</p>
+<table id ="table">
   <tr id="productList">
     <td>
       <img src="busMall-Images/bag.jpg" alt="r2d2">
@@ -33,16 +34,11 @@
     </td>
   </tr>
 </table>
-  
-  <ul> Products to Vote On</ul>
-    <li>R2d2: 0 Clicks</li>
-    <li>Banana: 0 Click</li>
-    <li>Bathroom Stand: 0 Clicks</li>
-    <li>Yellow Rainboots: 0 Clicks</li>
-    <li>Crazy Breakfast Machine: 0 clicks</li>
-    <li>Delicious Meat Gum: 0 clicks</li>
-    <li id="totalClicks">Total Clicks</li>
-</ul>
+<div>
+<canvas id="myChart" width="400" height="400"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script src="busmall.js"></script>
+</main>
 </body>
 </html>

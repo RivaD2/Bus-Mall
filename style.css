@@ -1,4 +1,30 @@
-#productList tr {
+#bus {
+  width: 600px;
+  display: block;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+nav {
+  float: right;
+  margin-top: 20px;
+}
+
+h1 {
+  text-align: center;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ5M4PdR6Y061ozyAbyWKzdcyoGKHXjuhtng&usqp=CAU);
+  background-repeat: no-repeat;
+}
+
+p {
+  text-align: center;
+}
+
+#table {
+  margin: 0 auto;
+  margin-top: 275px;
+}
+#productList {
   padding: 50px;
   display: inline-block;
  
