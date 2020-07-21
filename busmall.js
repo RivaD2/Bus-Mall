@@ -25,7 +25,7 @@ function Product(imgName,src,timesShown,numofVotes) {
 // this is where I start creating a new product//
 Product.prototype.renderProduct = function() {
   var target = document.getElementById('productList');
-  var productPlace = document.createElement('li');
+  var productPlace = document.createElement('td');
   var productImage = document.createElement('img');
   productImage.src = this.src;
   productImage.alt = this.imgName;

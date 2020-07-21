@@ -3,6 +3,9 @@
 }
 
 img {
-  width: 100px;
+  width: 300px;
 }
 
+#productList td {
+  padding: 30px;
+}
