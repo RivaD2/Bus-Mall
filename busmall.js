@@ -99,7 +99,7 @@ function renderTotalVotes() {
   for(var i = 0; i < productArray.length; i++) {
     var product = productArray[i];
     var productPlace = document.createElement('li');
-    productPlace.textContent = product.imgName + ' had' + product.numOfVotes + ' and was shown' + product.timesShown + ' times.';
+    productPlace.textContent = product.imgName + ' had ' + product.numOfVotes + ' and was shown ' + product.timesShown + ' times.';
     target.appendChild(productPlace);
   }
 }
