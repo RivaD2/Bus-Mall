@@ -13,11 +13,11 @@ var imgHistory = [0,1,2];
 /********************************************************************* */
 
 //Step 1:
-function Product(imgName,src,timesShown,numofVotes) {
+function Product(imgName,src,timesShown,numOfVotes) {
   this.imgName = imgName;
   this.src = src;
-  this.timesShown = 0;
-  this.numOfVotes = 0;
+  this.timesShown = timesShown;
+  this.numOfVotes = numOfVotes;
   Product.productArray.push(this);
 }
 
@@ -127,11 +127,11 @@ var storedProductLS = localStorage.getItem('Products');
 if(storedProductLS !== null) {
   var parsedProducts = JSON.parse(storedProductLS); // extracted properties of object so we can send to constructor
   for(var i = 0; i < parsedProducts.length; i++) {
-    var name = parsedProducts[i].imgName;
+    var imgName = parsedProducts[i].imgName;
     var votes = parsedProducts[i].numOfVotes;
     var src = parsedProducts[i].src;
     var timesShown = parsedProducts[i].timesShown;
-    new Product(name, src, timesShown,votes); // here we grabbed props and sent it back though constructor so we have all methods
+    new Product(imgName, src, timesShown,votes); // here we grabbed props and sent it back though constructor so we have all methods
   }
   console.log(parsedProducts);
 } else {
@@ -158,15 +158,15 @@ if(storedProductLS !== null) {
   new Product('wine-glass', 'busMall-Images/wine-glass.jpg',0,0);
 }
 
-function renderTotalVotes() {
-  var target = document.getElementById('productList');
-  for(var i = 0; i < Product.productArray.length; i++) {
-    var product = Product.productArray[i];
-    var productPlace = document.createElement('li');
-    productPlace.textContent = product.imgName + ' had ' + product.numOfVotes + ' and was shown ' + product.timesShown + ' times.';
-    target.appendChild(productPlace);
-  }
-}
+// function renderTotalVotes() {
+//   var target = document.getElementById('productList');
+//   for(var i = 0; i < Product.productArray.length; i++) {
+//     var product = Product.productArray[i];
+//     var productPlace = document.createElement('li');
+//     productPlace.textContent = product.imgName + ' had ' + product.numOfVotes + ' and was shown ' + product.timesShown + ' times.';
+//     target.appendChild(productPlace);
+//   }
+// }
 
 function displayChart() {
   console.log('trying to render chart');
@@ -178,16 +178,56 @@ function displayChart() {
     labelArray.push(Product.productArray[i].imgName);
     labelArray2.push(Product.productArray[i].timesShown);
     dataArray.push(Product.productArray[i].numOfVotes);
-    dataArray.push(Product.productArray[i].timesShown);
+    dataArray2.push(Product.productArray[i].timesShown);
   }
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'horizontalBar',
     data: {
-      labels: labelArray,labelArray2,
+      labels: labelArray,
       datasets: [{
         label: 'Votes ' + ' and ' + ' Times Shown',
-        data: dataArray, dataArray2,
+        data: dataArray,
+        backgroundColor: [
+          'rgba(83, 51, 237, 1)',
+          'rgba(77, 5, 232, 1)',
+          'rgba(228, 241, 254, 1)',
+          'rgba(89, 171, 227, 1)',
+          'rgba(51, 110, 123, 1)',
+          'rgba(92, 151, 191, 1)',
+          'rgba(30, 139, 195, 1)',
+          'rgba(34, 167, 240, 1)',
+          'rgba(107, 185, 240, 1)',
+          'rgba(0, 181, 204, 1)',
+          'rgba(75, 119, 190, 1)',
+          'rgba(197, 239, 247, 1)',
+          'rgba(58, 83, 155, 1)',
+          'rgba(1, 50, 67, 1)',
+          'rgba(31, 58, 147, 1)',
+          'rgba(25, 181, 254, 1)',
+          'rgba(44, 130, 201, 1)',
+          'rgba(129, 207, 224, 1)',
+          'rgba(82, 179, 217, 1)',
+          'rgba(52, 152, 219, 1)',
+          'rgba(37, 116, 169, 1)',
+          'rgba(77, 19, 209, 1)',
+          'rgba(68, 108, 179, 1)',
+          'rgba(52, 73, 94, 1)',
+
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 2
+      },
+      {
+        label: 'Votes ' + ' and ' + ' Times Shown',
+        data: dataArray2,
         backgroundColor: [
           'rgba(83, 51, 237, 1)',
           'rgba(77, 5, 232, 1)',
