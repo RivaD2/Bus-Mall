@@ -8,41 +8,39 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+  <header>
+ <div id ="logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ5M4PdR6Y061ozyAbyWKzdcyoGKHXjuhtng&usqp=CAU" id="bus">
+  <div id="text">Welcome to BusMall</div>
+  </div>
   <nav>
-  <h1>BusMall Product Vote Page</h1>
-  </div>
-      <ul>
-        <li>
-          <a href="index.html">ProductHomePage</a>
-        </li>
-      </ul>
-  </div>
-<table>
+    <div>
+      <a href="index.html" id="selected">ProductHomePage</a>
+    </div>
+</nav>
+<header>
+<main>
+  <p id="vote">Which Product Is the Best? Help us know which products are most liked, your votes matter!</p>
+<table id ="table">
   <tr id="productList">
     <td>
-      <img src="busMall-Images/bag.jpg" alt="r2d2">
+      <img src="busMall-Images/bag.jpg" class="products" alt="r2d2">
       <p>R2D2 bag</p>
     </td>
     <td>
-      <img src="busMall-Images/banana.jpg" alt="banana">
+      <img src="busMall-Images/banana.jpg" class="products" alt="banana">
       <p> Display Your Bananas</p>
     </td>
     <td>
-      <img src="busMall-Images/bathroomtpstand.jpg" alt="tpStand">
+      <img src="busMall-Images/bathroomtpstand.jpg" class= "products" alt="tpStand">
       <p> Fancy Toilet Paper Stand</p>
     </td>
   </tr>
 </table>
-  
-  <ul> Products to Vote On</ul>
-    <li>R2d2: 0 Clicks</li>
-    <li>Banana: 0 Click</li>
-    <li>Bathroom Stand: 0 Clicks</li>
-    <li>Yellow Rainboots: 0 Clicks</li>
-    <li>Crazy Breakfast Machine: 0 clicks</li>
-    <li>Delicious Meat Gum: 0 clicks</li>
-    <li id="totalClicks">Total Clicks</li>
-</ul>
+<div class="chartcontainer">
+<canvas id="myChart"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script src="busmall.js"></script>
+</main>
 </body>
 </html>

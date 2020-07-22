@@ -1,6 +1,46 @@
-#productList tr {
+body {
+  margin: 0 auto;
+  background-color:rgb(89, 201, 191);
+}
+nav {
+  float: left;
+  margin-top: 20px;
+}
+
+#logo {
+text-align: center;
+background-color: rgba(88, 82, 82, 0.411);
+background-blend-mode: soft-light;
+}
+#bus {
+border-radius: 100%;
+border: 5px black;
+}
+
+#text {
+  text-align: center;
+  font-size: 40px;
+  color: black;
+  font-weight: bold;
+  
+}
+main > p {
+  text-align: center;
+  padding-top: 60px;
+  font-size: 20px;
+}
+#table {
+  margin: 0 auto;
+}
+
+img {
+  width: 275px;
+  margin-top: 40px;
+}
+#productList {
   padding: 50px;
   display: inline-block;
+  border-radius: 80%;
  
 }
 
@@ -10,8 +50,16 @@
 }
 #productList td {
   padding: 20px;
+  width: 100px;
+
 }
-img {
-  width: 300px;
+.products {
+  border-radius: 80%
 }
 
+.chartcontainer {
+  width:500px; 
+  height: 400px;
+  background-color: white;
+  margin: 0 auto;
+}
