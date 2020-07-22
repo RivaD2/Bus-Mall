@@ -14,7 +14,7 @@ background-blend-mode: soft-light;
 }
 #bus {
 border-radius: 100%;
-border: 5px black;
+border: solid 5px white;
 }
 
 #text {
@@ -54,7 +54,8 @@ img {
 
 }
 .products {
-  border-radius: 80%
+  border-radius: 80%;
+  border: solid 2px black;
 }
 
 .chartcontainer {
@@ -62,4 +63,5 @@ img {
   height: 400px;
   background-color: white;
   margin: 0 auto;
+  border: solid 3px rgb(49, 114, 109);
 }
