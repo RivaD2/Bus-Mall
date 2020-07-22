@@ -13,11 +13,11 @@ var imgHistory = [0,1,2];
 /********************************************************************* */
 
 //Step 1:
-function Product(imgName,src,timesShown,numofVotes) {
+function Product(imgName,src,timesShown,numOfVotes) {
   this.imgName = imgName;
   this.src = src;
-  this.timesShown = 0;
-  this.numOfVotes = 0;
+  this.timesShown = timesShown;
+  this.numOfVotes = numOfVotes;
   Product.productArray.push(this);
 }
 
@@ -55,6 +55,9 @@ function handleClickOnProductImg(event) {
       console.log('it\'s a match', totalClicks);
     }
   }
+  var productArrayString = JSON.stringify(Product.productArray);
+  localStorage.setItem('Products', productArrayString);
+
   displayProducts();
   // var totalClicksHTML = document.getElementById('totalClicks');  // not needed
   // totalClicksHTML.innerHTML= totalClicks;
@@ -116,53 +119,74 @@ function randomImg(min, max) {
   return randomIndex;
 }
 
-
-new Product('r2d2', 'busMall-Images/bag.jpg',0,0);
-new Product('banana', 'busMall-Images/banana.jpg',0,0);
-new Product('tpstand', 'busMall-Images/bathroomtpstand.jpg',0,0);
-new Product('boots', 'busMall-Images/boots.jpg',0,0);
-new Product('breakfast', 'busMall-Images/breakfast.jpg',0,0);
-new Product('bubblegum', 'busMall-Images/bubblegum.jpg',0,0);
-new Product('chair', 'busMall-Images/chair.jpg',0,0);
-new Product('cthulhu', 'busMall-Images/cthulhu.jpg',0,0);
-new Product('dog-duck', 'busMall-Images/dog-duck.jpg',0,0);
-new Product('dragon', 'busMall-Images/dragon.jpg',0,0);
-new Product('pen', 'busMall-Images/pen.jpg',0,0);
-new Product('pet-sweep', 'busMall-Images/pet-sweep.jpg',0,0);
-new Product('scissors', 'busMall-Images/scissors.jpg',0,0);
-new Product('shark', 'busMall-Images/shark.jpg',0,0);
-new Product('sweep', 'busMall-Images/sweep.png',0,0);
-new Product('tauntaun', 'busMall-Images/tauntaun.jpg',0,0);
-new Product('unicorn', 'busMall-Images/unicorn.jpg',0,0);
-new Product('usb', 'busMall-Images/usb.gif',0,0);
-new Product('water-can', 'busMall-Images/water-can.jpg',0,0);
-new Product('wine-glass', 'busMall-Images/wine-glass.jpg',0,0);
-
-function renderTotalVotes() {
-  var target = document.getElementById('productList');
-  for(var i = 0; i < Product.productArray.length; i++) {
-    var product = Product.productArray[i];
-    var productPlace = document.createElement('li');
-    productPlace.textContent = product.imgName + ' had ' + product.numOfVotes + ' and was shown ' + product.timesShown + ' times.';
-    target.appendChild(productPlace);
+// products.product = parsedProducts;
+// if(parsedProducts !== null) {
+//   var storedProductLS = JSON.parse(localStorage.getItem('products'));
+// }
+var storedProductLS = localStorage.getItem('Products');
+if(storedProductLS !== null) {
+  var parsedProducts = JSON.parse(storedProductLS); // extracted properties of object so we can send to constructor
+  for(var i = 0; i < parsedProducts.length; i++) {
+    var imgName = parsedProducts[i].imgName;
+    var votes = parsedProducts[i].numOfVotes;
+    var src = parsedProducts[i].src;
+    var timesShown = parsedProducts[i].timesShown;
+    new Product(imgName, src, timesShown,votes); // here we grabbed props and sent it back though constructor so we have all methods
   }
+  console.log(parsedProducts);
+} else {
+
+  new Product('r2d2', 'busMall-Images/bag.jpg',0,0);
+  new Product('banana', 'busMall-Images/banana.jpg',0,0);
+  new Product('tpstand', 'busMall-Images/bathroomtpstand.jpg',0,0);
+  new Product('boots', 'busMall-Images/boots.jpg',0,0);
+  new Product('breakfast', 'busMall-Images/breakfast.jpg',0,0);
+  new Product('bubblegum', 'busMall-Images/bubblegum.jpg',0,0);
+  new Product('chair', 'busMall-Images/chair.jpg',0,0);
+  new Product('cthulhu', 'busMall-Images/cthulhu.jpg',0,0);
+  new Product('dog-duck', 'busMall-Images/dog-duck.jpg',0,0);
+  new Product('dragon', 'busMall-Images/dragon.jpg',0,0);
+  new Product('pen', 'busMall-Images/pen.jpg',0,0);
+  new Product('pet-sweep', 'busMall-Images/pet-sweep.jpg',0,0);
+  new Product('scissors', 'busMall-Images/scissors.jpg',0,0);
+  new Product('shark', 'busMall-Images/shark.jpg',0,0);
+  new Product('sweep', 'busMall-Images/sweep.png',0,0);
+  new Product('tauntaun', 'busMall-Images/tauntaun.jpg',0,0);
+  new Product('unicorn', 'busMall-Images/unicorn.jpg',0,0);
+  new Product('usb', 'busMall-Images/usb.gif',0,0);
+  new Product('water-can', 'busMall-Images/water-can.jpg',0,0);
+  new Product('wine-glass', 'busMall-Images/wine-glass.jpg',0,0);
 }
+
+// function renderTotalVotes() {
+//   var target = document.getElementById('productList');
+//   for(var i = 0; i < Product.productArray.length; i++) {
+//     var product = Product.productArray[i];
+//     var productPlace = document.createElement('li');
+//     productPlace.textContent = product.imgName + ' had ' + product.numOfVotes + ' and was shown ' + product.timesShown + ' times.';
+//     target.appendChild(productPlace);
+//   }
+// }
 
 function displayChart() {
   console.log('trying to render chart');
+  var labelArray2 = [];
   var labelArray =[];
   var dataArray = []; // pushing values into array // each imgName of product
+  var dataArray2 = [];
   for(var i = 0; i < Product.productArray.length; i++) {
     labelArray.push(Product.productArray[i].imgName);
+    labelArray2.push(Product.productArray[i].timesShown);
     dataArray.push(Product.productArray[i].numOfVotes);
+    dataArray2.push(Product.productArray[i].timesShown);
   }
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'horizontalBar',
     data: {
       labels: labelArray,
       datasets: [{
-        label: '# of Votes',
+        label: 'Votes ' + ' and ' + ' Times Shown',
         data: dataArray,
         backgroundColor: [
           'rgba(83, 51, 237, 1)',
@@ -199,7 +223,47 @@ function displayChart() {
           'rgba(153, 102, 255, 1)',
           'rgba(255, 159, 64, 1)'
         ],
-        borderWidth: 1
+        borderWidth: 2
+      },
+      {
+        label: 'Votes ' + ' and ' + ' Times Shown',
+        data: dataArray2,
+        backgroundColor: [
+          'rgba(83, 51, 237, 1)',
+          'rgba(77, 5, 232, 1)',
+          'rgba(228, 241, 254, 1)',
+          'rgba(89, 171, 227, 1)',
+          'rgba(51, 110, 123, 1)',
+          'rgba(92, 151, 191, 1)',
+          'rgba(30, 139, 195, 1)',
+          'rgba(34, 167, 240, 1)',
+          'rgba(107, 185, 240, 1)',
+          'rgba(0, 181, 204, 1)',
+          'rgba(75, 119, 190, 1)',
+          'rgba(197, 239, 247, 1)',
+          'rgba(58, 83, 155, 1)',
+          'rgba(1, 50, 67, 1)',
+          'rgba(31, 58, 147, 1)',
+          'rgba(25, 181, 254, 1)',
+          'rgba(44, 130, 201, 1)',
+          'rgba(129, 207, 224, 1)',
+          'rgba(82, 179, 217, 1)',
+          'rgba(52, 152, 219, 1)',
+          'rgba(37, 116, 169, 1)',
+          'rgba(77, 19, 209, 1)',
+          'rgba(68, 108, 179, 1)',
+          'rgba(52, 73, 94, 1)',
+
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 2
       }]
     },
     options: {
