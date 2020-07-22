@@ -55,6 +55,9 @@ function handleClickOnProductImg(event) {
       console.log('it\'s a match', totalClicks);
     }
   }
+  var productArrayString = JSON.stringify(Product.productArray);
+  localStorage.setItem('Products', productArrayString);
+
   displayProducts();
   // var totalClicksHTML = document.getElementById('totalClicks');  // not needed
   // totalClicksHTML.innerHTML= totalClicks;
@@ -116,27 +119,44 @@ function randomImg(min, max) {
   return randomIndex;
 }
 
+// products.product = parsedProducts;
+// if(parsedProducts !== null) {
+//   var storedProductLS = JSON.parse(localStorage.getItem('products'));
+// }
+var storedProductLS = localStorage.getItem('Products');
+if(storedProductLS !== null) {
+  var parsedProducts = JSON.parse(storedProductLS); // extracted properties of object so we can send to constructor
+  for(var i = 0; i < parsedProducts.length; i++) {
+    var name = parsedProducts[i].imgName;
+    var votes = parsedProducts[i].numOfVotes;
+    var src = parsedProducts[i].src;
+    var timesShown = parsedProducts[i].timesShown;
+    new Product(name, src, timesShown,votes); // here we grabbed props and sent it back though constructor so we have all methods
+  }
+  console.log(parsedProducts);
+} else {
 
-new Product('r2d2', 'busMall-Images/bag.jpg',0,0);
-new Product('banana', 'busMall-Images/banana.jpg',0,0);
-new Product('tpstand', 'busMall-Images/bathroomtpstand.jpg',0,0);
-new Product('boots', 'busMall-Images/boots.jpg',0,0);
-new Product('breakfast', 'busMall-Images/breakfast.jpg',0,0);
-new Product('bubblegum', 'busMall-Images/bubblegum.jpg',0,0);
-new Product('chair', 'busMall-Images/chair.jpg',0,0);
-new Product('cthulhu', 'busMall-Images/cthulhu.jpg',0,0);
-new Product('dog-duck', 'busMall-Images/dog-duck.jpg',0,0);
-new Product('dragon', 'busMall-Images/dragon.jpg',0,0);
-new Product('pen', 'busMall-Images/pen.jpg',0,0);
-new Product('pet-sweep', 'busMall-Images/pet-sweep.jpg',0,0);
-new Product('scissors', 'busMall-Images/scissors.jpg',0,0);
-new Product('shark', 'busMall-Images/shark.jpg',0,0);
-new Product('sweep', 'busMall-Images/sweep.png',0,0);
-new Product('tauntaun', 'busMall-Images/tauntaun.jpg',0,0);
-new Product('unicorn', 'busMall-Images/unicorn.jpg',0,0);
-new Product('usb', 'busMall-Images/usb.gif',0,0);
-new Product('water-can', 'busMall-Images/water-can.jpg',0,0);
-new Product('wine-glass', 'busMall-Images/wine-glass.jpg',0,0);
+  new Product('r2d2', 'busMall-Images/bag.jpg',0,0);
+  new Product('banana', 'busMall-Images/banana.jpg',0,0);
+  new Product('tpstand', 'busMall-Images/bathroomtpstand.jpg',0,0);
+  new Product('boots', 'busMall-Images/boots.jpg',0,0);
+  new Product('breakfast', 'busMall-Images/breakfast.jpg',0,0);
+  new Product('bubblegum', 'busMall-Images/bubblegum.jpg',0,0);
+  new Product('chair', 'busMall-Images/chair.jpg',0,0);
+  new Product('cthulhu', 'busMall-Images/cthulhu.jpg',0,0);
+  new Product('dog-duck', 'busMall-Images/dog-duck.jpg',0,0);
+  new Product('dragon', 'busMall-Images/dragon.jpg',0,0);
+  new Product('pen', 'busMall-Images/pen.jpg',0,0);
+  new Product('pet-sweep', 'busMall-Images/pet-sweep.jpg',0,0);
+  new Product('scissors', 'busMall-Images/scissors.jpg',0,0);
+  new Product('shark', 'busMall-Images/shark.jpg',0,0);
+  new Product('sweep', 'busMall-Images/sweep.png',0,0);
+  new Product('tauntaun', 'busMall-Images/tauntaun.jpg',0,0);
+  new Product('unicorn', 'busMall-Images/unicorn.jpg',0,0);
+  new Product('usb', 'busMall-Images/usb.gif',0,0);
+  new Product('water-can', 'busMall-Images/water-can.jpg',0,0);
+  new Product('wine-glass', 'busMall-Images/wine-glass.jpg',0,0);
+}
 
 function renderTotalVotes() {
   var target = document.getElementById('productList');
@@ -150,20 +170,24 @@ function renderTotalVotes() {
 
 function displayChart() {
   console.log('trying to render chart');
+  var labelArray2 = [];
   var labelArray =[];
   var dataArray = []; // pushing values into array // each imgName of product
+  var dataArray2 = [];
   for(var i = 0; i < Product.productArray.length; i++) {
     labelArray.push(Product.productArray[i].imgName);
+    labelArray2.push(Product.productArray[i].timesShown);
     dataArray.push(Product.productArray[i].numOfVotes);
+    dataArray.push(Product.productArray[i].timesShown);
   }
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'horizontalBar',
     data: {
-      labels: labelArray,
+      labels: labelArray,labelArray2,
       datasets: [{
-        label: '# of Votes',
-        data: dataArray,
+        label: 'Votes ' + ' and ' + ' Times Shown',
+        data: dataArray, dataArray2,
         backgroundColor: [
           'rgba(83, 51, 237, 1)',
           'rgba(77, 5, 232, 1)',
@@ -199,7 +223,7 @@ function displayChart() {
           'rgba(153, 102, 255, 1)',
           'rgba(255, 159, 64, 1)'
         ],
-        borderWidth: 1
+        borderWidth: 2
       }]
     },
     options: {

@@ -3,9 +3,11 @@ body {
   background-color:rgb(89, 201, 191);
   border: solid whitesmoke 10px;
 }
+
 hr {
-  border: solid whitesmoke 8px;
+  border: solid whitesmoke 6px;
 }
+
 nav {
   float: right;
   margin-top: 20px;
@@ -17,6 +19,7 @@ text-align: center;
 background-color: rgba(88, 82, 82, 0.411);
 background-blend-mode: soft-light;
 }
+
 #bus {
 border-radius: 100%;
 border: solid 5px white;
@@ -26,9 +29,9 @@ border: solid 5px white;
   text-align: center;
   font-size: 50px;
   color: black;
-  font-weight: bold;
-  
+  font-weight: bold; 
 }
+
 main > p {
   text-align: center;
   padding-top: 100px;
@@ -43,6 +46,7 @@ main > p {
   font-weight: bold;
   font-family: 'Bebas Neue', cursive;
 }
+
 #table {
   margin: 0 auto;
 }
@@ -51,6 +55,7 @@ img {
   width: 275px;
   margin-top: 40px;
 }
+
 #productList {
   padding: 50px;
   display: inline-block;
@@ -71,10 +76,20 @@ img {
   border: solid 2px black;
 }
 
+#results {
+  text-align:center;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 35px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  text-decoration: underline;
+}
+
 .chartcontainer {
-  width:500px; 
-  height: 500px;
+  width:700px; 
+  height: 600px;
   background-color: white;
   margin: 0 auto;
   border: solid 3px rgb(49, 114, 109);
+  padding-bottom: 30px;
 }
