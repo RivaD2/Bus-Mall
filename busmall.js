@@ -30,6 +30,8 @@ Product.prototype.renderProduct = function() {
   var productImage = document.createElement('img');
   productImage.src = this.src;
   productImage.alt = this.imgName;
+  //Used setAttribute method on productImage
+  //two parameters are passed, the 1st is name of attribute, the 2nd is a value (value for whaetever the attribute uses)
   productImage.setAttribute('class','products');
   productPlace.appendChild(productImage);
   var productPText = document.createElement('p');
