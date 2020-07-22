@@ -1,32 +1,46 @@
-#bus {
-  width: 600px;
-  display: block;
-  margin-left: 0;
-  margin-right: 0;
+body {
+  margin: 0 auto;
+  background-color:rgb(89, 201, 191);
 }
-
 nav {
-  float: right;
+  float: left;
   margin-top: 20px;
 }
 
-h1 {
-  text-align: center;
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRZ5M4PdR6Y061ozyAbyWKzdcyoGKHXjuhtng&usqp=CAU);
-  background-repeat: no-repeat;
+#logo {
+text-align: center;
+background-color: rgba(88, 82, 82, 0.411);
+background-blend-mode: soft-light;
+}
+#bus {
+border-radius: 100%;
+border: 5px black;
 }
 
-p {
+#text {
   text-align: center;
+  font-size: 40px;
+  color: black;
+  font-weight: bold;
+  
 }
-
+main > p {
+  text-align: center;
+  padding-top: 60px;
+  font-size: 20px;
+}
 #table {
   margin: 0 auto;
-  margin-top: 275px;
+}
+
+img {
+  width: 275px;
+  margin-top: 40px;
 }
 #productList {
   padding: 50px;
   display: inline-block;
+  border-radius: 80%;
  
 }
 
@@ -36,8 +50,16 @@ p {
 }
 #productList td {
   padding: 20px;
+  width: 100px;
+
 }
-img {
-  width: 300px;
+.products {
+  border-radius: 80%
 }
 
+.chartcontainer {
+  width:500px; 
+  height: 400px;
+  background-color: white;
+  margin: 0 auto;
+}

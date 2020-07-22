@@ -30,6 +30,7 @@ Product.prototype.renderProduct = function() {
   var productImage = document.createElement('img');
   productImage.src = this.src;
   productImage.alt = this.imgName;
+  productImage.setAttribute('class','products');
   productPlace.appendChild(productImage);
   var productPText = document.createElement('p');
   productPText.textContent = this.imgName;
@@ -122,6 +123,16 @@ new Product('chair', 'busMall-Images/chair.jpg',0,0);
 new Product('cthulhu', 'busMall-Images/cthulhu.jpg',0,0);
 new Product('dog-duck', 'busMall-Images/dog-duck.jpg',0,0);
 new Product('dragon', 'busMall-Images/dragon.jpg',0,0);
+new Product('pen', 'busMall-Images/pen.jpg',0,0);
+new Product('pet-sweep', 'busMall-Images/pet-sweep.jpg',0,0);
+new Product('scissors', 'busMall-Images/scissors.jpg',0,0);
+new Product('shark', 'busMall-Images/shark.jpg',0,0);
+new Product('sweep', 'busMall-Images/sweep.png',0,0);
+new Product('tauntaun', 'busMall-Images/tauntaun.jpg',0,0);
+new Product('unicorn', 'busMall-Images/unicorn.jpg',0,0);
+new Product('usb', 'busMall-Images/usb.gif',0,0);
+new Product('water-can', 'busMall-Images/water-can.jpg',0,0);
+new Product('wine-glass', 'busMall-Images/wine-glass.jpg',0,0);
 
 function renderTotalVotes() {
   var target = document.getElementById('productList');
