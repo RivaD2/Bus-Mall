@@ -49,6 +49,7 @@ function handleClickOnProductImg(event) {
   for(var i =0; i < Product.productArray.length;i++) {
     console.log('checking product', Product.productArray[i]);
     if(Product.productArray[i].src === event.target.getAttribute('src')) {
+      // if product is equal to src of product img, we will increase total clicks and num of votes
       Product.productArray[i].numOfVotes++;
       totalClicks++;
       console.log('it\'s a match', totalClicks);
@@ -71,6 +72,7 @@ productList.addEventListener('click', handleClickOnProductImg);
 
 
 //this goes after loop-- this is what will randomize the images to the user/ the images would be random
+// the loop below will shift off a value of array from the front,so now we can remove items as we add
 //step 4
 
 function displayProducts() {
