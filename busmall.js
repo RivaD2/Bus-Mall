@@ -45,9 +45,7 @@ Product.prototype.renderProduct = function() {
 
 // step 3:
 function handleClickOnProductImg(event) {
-  console.log(event.target);
   for(var i =0; i < Product.productArray.length;i++) {
-    console.log('checking product', Product.productArray[i]);
     if(Product.productArray[i].src === event.target.getAttribute('src')) {
       // if product is equal to src of product img, we will increase total clicks and num of votes
       Product.productArray[i].numOfVotes++;
